@@ -1,0 +1,120 @@
+/* Aplica el box-sizing border-box a todos los elementos, lo que asegura que el padding y el border no afecten el tamaño total del elemento. 
+   También reinicia los márgenes y los rellenos a 0 para evitar inconsistencias entre navegadores. */
+   * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Establece que el elemento <html> tenga una altura del 100% del viewport */
+html {
+    height: 100%;
+}
+
+/* Define estilos para el <body>, incluyendo la fuente, tamaño de fuente y altura mínima */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente por defecto */
+    font-size: 1.2rem; /* Tamaño de fuente base */
+    min-height: 100%; /* Asegura que el body ocupe al menos el 100% de la altura del viewport */
+}
+
+/* Estilos aplicados a todos los elementos dentro del contenedor con la clase .container-grid:
+   - Sombra de caja para dar un efecto de elevación.
+   - Bordes redondeados.
+   - Relleno interno de 10px.
+   - Alineación de texto centrada. */
+.container-grid > * {
+    box-shadow: -1px 1px 7px 0px rgb(0, 0, 0); /* Sombra sutil */
+    border-radius: 4px; /* Bordes redondeados */
+    padding: 10px; /* Espacio interno */
+    text-align: center; /* Centra el texto */
+}
+
+/* Estilos para el área del encabezado en el diseño de la cuadrícula */
+.header {
+    grid-area: header; /* Asigna esta clase a la celda de la cuadrícula 'header' */
+    background-color: aqua; /* Color de fondo */
+}
+
+/* Estilos para el área de la barra de navegación en el diseño de la cuadrícula */
+.navbar {
+    grid-area: navbar; /* Asigna esta clase a la celda de la cuadrícula 'navbar' */
+    background-color: aquamarine; /* Color de fondo */
+}
+
+/* Estilos para el área principal en el diseño de la cuadrícula */
+.main {
+    grid-area: main; /* Asigna esta clase a la celda de la cuadrícula 'main' */
+    background-color: azure; /* Color de fondo */
+}
+
+/* Estilos para el área de la barra lateral en el diseño de la cuadrícula */
+.sidebar {
+    grid-area: sidebar; /* Asigna esta clase a la celda de la cuadrícula 'sidebar' */
+    background-color: beige; /* Color de fondo */
+}
+
+/* Estilos para el área del pie de página en el diseño de la cuadrícula */
+.footer {
+    grid-area: footer; /* Asigna esta clase a la celda de la cuadrícula 'footer' */
+    background-color: bisque; /* Color de fondo */
+}
+
+/* Define el diseño de la cuadrícula para pantallas más pequeñas:
+   - `gap` define el espacio entre los elementos de la cuadrícula.
+   - `grid-template` define las áreas y tamaños de las filas y columnas en la cuadrícula. */
+.container-grid {
+    display: grid; /* Define el contenedor como una cuadrícula */
+    gap: 20px; /* Espacio entre elementos de la cuadrícula */
+    background-color: rgb(70, 9, 127); /* Color de fondo del contenedor */
+    grid-template: 
+    "header" 100px
+    "navbar" 50px
+    "sidebar" auto
+    "main" 100px
+    "footer" 100px; /* Definición de las áreas y tamaños de filas */
+}
+
+
+
+
+/* Estilos para pantallas con un ancho mínimo de 768px:
+   - `grid-template` cambia la disposición para pantallas más grandes, combinando áreas de la cuadrícula y ajustando los tamaños de las filas y columnas. */
+@media screen and (min-width: 768px) {
+    .container-grid {
+        background-color: rgb(43, 55, 226); /* Nuevo color de fondo */
+        grid-template: 
+        "header header" 100px
+        "navbar navbar" 50px
+        "sidebar main" auto
+        "footer footer" 100px /
+        200px auto; /* Nuevas configuraciones de áreas y tamaños para pantallas más grandes */
+    }
+}
+
+/* Estilos para pantallas con un ancho mínimo de 1024px:
+   - Ajusta el diseño para pantallas aún más grandes, con diferentes colores de fondo y tamaños de área. */
+@media screen and (min-width: 1024px) {
+    .container-grid {
+        background-color: rgb(226, 76, 43); /* Nuevo color de fondo */
+        grid-template: 
+        "header header" 50px
+        "navbar navbar" 100px
+        "sidebar main" auto
+        "footer footer" 100px /
+        200px auto; /* Nuevas configuraciones de áreas y tamaños para pantallas más grandes */
+    }
+}
+
+/* Estilos para pantallas con un ancho mínimo de 1200px:
+   - Proporciona una disposición aún más ajustada para pantallas grandes, con tres columnas para el encabezado y el pie de página. */
+@media screen and (min-width: 1200px) {
+    .container-grid {
+        background-color: rgb(46, 226, 43); /* Nuevo color de fondo */
+        grid-template: 
+        "header header header" 100px
+        "navbar main sidebar" auto
+        "footer footer footer" 200px /
+        200px auto 200px; /* Nuevas configuraciones de áreas y tamaños para pantallas aún más grandes */
+    }
+}
